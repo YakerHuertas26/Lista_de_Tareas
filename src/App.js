@@ -10,6 +10,11 @@ const App=() =>{
       id:1,
       description:'Practicar JavaScript',
       state: false
+    },
+    {
+      id:2,
+      description:'Practicar React-js',
+      state: true
     }
   ]) 
 

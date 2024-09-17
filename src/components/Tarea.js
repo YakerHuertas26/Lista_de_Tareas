@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { FaCheckSquare } from "react-icons/fa";
+import { FaCheckSquare,FaRegSquare } from "react-icons/fa";
+
 import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
-const Tarea = ({tarea,setTareas}) => {
+const Tarea = ({tarea,tareaCompletada,setTareas,ListaTareas}) => {
 
     const [btnEdit,setBtnEdit]= useState(false)
     const [tareaInicial, setTareaInicual]= useState(tarea.description)
@@ -10,21 +11,32 @@ const Tarea = ({tarea,setTareas}) => {
     const editar=()=>{
         setBtnEdit(!btnEdit)
     }
-    const actualizarTarea=(e)=>{
+    const actualizarTarea=(id,e)=>{
         e.preventDefault();
-        console.log('actualizando......');
-        
+        setTareas(ListaTareas.map((elemntos)=>{
+            if (elemntos.id===id) {
+                return {...elemntos,description:tareaInicial}
+                
+            }
+            return elemntos
+            })
+        )
+        setBtnEdit(!btnEdit)
     }
     
     return (
         
         <li className="lista-tareas__tarea">
-            <FaCheckSquare className="lista-tareas__icono list-tareas__icono-check" />
+            <span onClick={()=>tareaCompletada(tarea.id)}> 
+                {tarea.state?<FaCheckSquare className="lista-tareas__icono list-tareas__icono-check" />
+                :
+                <FaRegSquare className="lista-tareas__icono list-tareas__icono-check"/>}
+            </span>
             
             <span className="lista-tareas__texto">
             {btnEdit?
                 <form action="" className="formulario-editar-tarea"
-                onSubmit={actualizarTarea}>
+                onSubmit={(e)=>actualizarTarea(tarea.id,e)}>
                     <input type="text"
                         className="formulario-editar-tarea__input"
                         value={tareaInicial}
