@@ -6,11 +6,10 @@ const Formulario = ({tareas,setTareas}) => {
     
     const [nuevaTarea,setNuevaTarea]= useState('')
     
-    const agregarNuevaTarea=(e)=>{
-        setNuevaTarea(e.target.value)
-    }
+
     const registarTarea=(e)=>{
         e.preventDefault();
+        nuevaTarea.length>0 ?
         setTareas([
             ...tareas,
             {
@@ -19,8 +18,11 @@ const Formulario = ({tareas,setTareas}) => {
                 state:false
             }
         ])
-        
+        :
+        setTareas(tareas);
+        setNuevaTarea('')
     }
+    
     
     return (  
         <form className="formulario" action="" onSubmit={registarTarea}>
@@ -28,7 +30,7 @@ const Formulario = ({tareas,setTareas}) => {
             type="text" 
             className="formulario__tareas" 
             placeholder="Escribe una tarea..."
-            onChange={agregarNuevaTarea}
+            onChange={(e)=>setNuevaTarea(e.target.value)}
             value={nuevaTarea}
             />
 

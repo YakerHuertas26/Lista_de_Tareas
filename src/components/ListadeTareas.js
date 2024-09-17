@@ -1,7 +1,7 @@
 import './../App.css';
 import Tarea from './Tarea';
 
-const ListaTareas = ({tareas}) => {
+const ListaTareas = ({tareas,setTareas}) => {
 
     
     return (  
@@ -11,7 +11,8 @@ const ListaTareas = ({tareas}) => {
                 tareas.map((element)=>{
                     return <Tarea 
                             key={element.id}
-                            tarea={element}/>
+                            tarea={element}
+                            setTareas={setTareas}/>
                 })
                 :
                 <div className="lista-tareas__mensaje">NO hay tareas</div>
