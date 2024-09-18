@@ -1,26 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Formulario from "./components/Formulario";
 import Header from "./components/Header";
 import ListaTareas from "./components/ListadeTareas";
 
 const App=() =>{
+  // Del local storage guardo mis tareas para mostrarlas 
+  const tareasIniciales= localStorage.getItem('tareas')?
+  JSON.parse(localStorage.getItem('tareas'))
+  : [];
+
   // datos de las tareas
-  const [tareas,setTareas]= useState([
-    {
-      id:1,
-      description:'Practicar JavaScript',
-      state: false
-    },
-    {
-      id:2,
-      description:'Practicar React-js',
-      state: true
-    }
-  ]); 
+  const [tareas,setTareas]= useState(tareasIniciales);
+
+  // Mediante useEfect quiero mostrar mis tareas
+  useEffect(()=>{
+    localStorage.setItem('tareas',JSON.stringify(tareas))
+  },[tareas])
+
+  // ++++++++Con mostrar tareas completadas
+  // let mostrarTareaCompleta= '';
+  // if (localStorage.getItem('estadoTareaCompleta')===null) {
+  //   mostrarTareaCompleta=true;
+  // } else{
+  //   mostrarTareaCompleta= localStorage.getItem('estadoTareaCompleta')==='true';
+  // }
 
   const [MostrarTareaCompletada,setMostrarTareaCompletada]= useState(true)
 
-console.log(MostrarTareaCompletada);
+  // useEffect(()=>{
+  //   localStorage.setItem('estadoTareaCompleta', JSON.stringify(MostrarTareaCompletada))
+    
+  // },[MostrarTareaCompletada])
 
 return (
     <div className='contenedor'>
