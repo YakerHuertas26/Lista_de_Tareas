@@ -3,7 +3,7 @@ import { FaCheckSquare,FaRegSquare } from "react-icons/fa";
 
 import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
-const Tarea = ({tarea,tareaCompletada,setTareas,ListaTareas}) => {
+const Tarea = ({tarea,tareaCompletada,actualizarTarea,borrar}) => {
 
     const [btnEdit,setBtnEdit]= useState(false)
     const [tareaInicial, setTareaInicual]= useState(tarea.description)
@@ -11,18 +11,24 @@ const Tarea = ({tarea,tareaCompletada,setTareas,ListaTareas}) => {
     const editar=()=>{
         setBtnEdit(!btnEdit)
     }
-    const actualizarTarea=(id,e)=>{
-        e.preventDefault();
-        setTareas(ListaTareas.map((elemntos)=>{
-            if (elemntos.id===id) {
-                return {...elemntos,description:tareaInicial}
-                
-            }
-            return elemntos
-            })
-        )
+
+    const btnEdidar=(e)=>{
+        e.preventDefault()
+        actualizarTarea(tarea.id,tareaInicial)
         setBtnEdit(!btnEdit)
     }
+    // const actualizarTarea=(id,e)=>{
+    //     e.preventDefault();
+    //     setTareas(ListaTareas.map((elemntos)=>{
+    //         if (elemntos.id===id) {
+    //             return {...elemntos,description:tareaInicial}
+                
+    //         }
+    //         return elemntos
+    //         })
+    //     )
+    //     setBtnEdit(!btnEdit)
+    // }
     
     return (
         
@@ -36,7 +42,7 @@ const Tarea = ({tarea,tareaCompletada,setTareas,ListaTareas}) => {
             <span className="lista-tareas__texto">
             {btnEdit?
                 <form action="" className="formulario-editar-tarea"
-                onSubmit={(e)=>actualizarTarea(tarea.id,e)}>
+                onSubmit={(e)=>btnEdidar(e)}>
                     <input type="text"
                         className="formulario-editar-tarea__input"
                         value={tareaInicial}
@@ -52,7 +58,9 @@ const Tarea = ({tarea,tareaCompletada,setTareas,ListaTareas}) => {
                 className="lista-tareas__icono lista-tareas__icono-accion"
                 onClick={editar}/>
             
-                <MdDelete className="lista-tareas__icono lista-tareas__icono-accion " />
+                <MdDelete 
+                className="lista-tareas__icono lista-tareas__icono-accion"
+                onClick={()=>borrar(tarea.id)}/>
             </div>
         </li>
     );

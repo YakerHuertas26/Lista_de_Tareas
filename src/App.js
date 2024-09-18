@@ -16,13 +16,20 @@ const App=() =>{
       description:'Practicar React-js',
       state: true
     }
-  ]) 
+  ]); 
 
-  return (
+  const [MostrarTareaCompletada,setMostrarTareaCompletada]= useState(true)
+
+console.log(MostrarTareaCompletada);
+
+return (
     <div className='contenedor'>
-      <Header/>
+      <Header 
+      tareaCompletada={MostrarTareaCompletada}
+      setTareaCompletada={setMostrarTareaCompletada}/>
+      
       <Formulario tareas={tareas} setTareas={setTareas}/>
-      <ListaTareas tareas={tareas} setTareas={setTareas}/>
+      <ListaTareas tareas={tareas} setTareas={setTareas} MostrarTareaCompletada={MostrarTareaCompletada}/>
     </div>
   );
 }
