@@ -2,7 +2,7 @@
   "name": "lista_de_tareas",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/YakerHuertas26/Lista_de_Tareas",
+  "homepage": "https://yakerhuertas26.github.io/Lista_de_Tareas/",
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
     "@testing-library/jest-dom": "^5.17.0",
