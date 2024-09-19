@@ -2,7 +2,7 @@
   "name": "lista_de_tareas",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http:/yakerhuertas26.github.io/Lista_de_Tareas/",
+  "homepage": "http:/yakerhuertas26.github.io/Lista_de_Tareas",
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
     "@testing-library/jest-dom": "^5.17.0",
@@ -18,7 +18,7 @@
   },
   "scripts": {
     "predeploy":"npm rum build",
-    "deploy":"gh-page -d build ",
+    "deploy":"gh-page -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
