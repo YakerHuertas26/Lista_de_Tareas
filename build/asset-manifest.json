@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Lista_de_Tareas/build/static/css/main.dd19483a.css",
+    "main.js": "/Lista_de_Tareas/build/static/js/main.e2638390.js",
+    "index.html": "/Lista_de_Tareas/build/index.html",
+    "main.dd19483a.css.map": "/Lista_de_Tareas/build/static/css/main.dd19483a.css.map",
+    "main.e2638390.js.map": "/Lista_de_Tareas/build/static/js/main.e2638390.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dd19483a.css",
+    "static/js/main.e2638390.js"
+  ]
+}
